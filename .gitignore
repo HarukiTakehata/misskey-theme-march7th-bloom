@@ -1,0 +1,8 @@
+node_modules/
+vendor/
+
+# 由 `npm run check` 生成的预览页（截图 preview/shot.png 是提交的展示物）
+preview/theme-preview.html
+
+*.log
+.DS_Store

@@ -1,0 +1,22 @@
+{
+  "name": "misskey-theme-march7th-bloom",
+  "version": "1.0.0",
+  "description": "Misskey theme built from a 7-color pink/violet palette (light + dark)",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "author": "Haruki Takehata <haruki-takehata@yang-qwq.top>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HarukiTakehata/misskey-theme-march7th-bloom.git"
+  },
+  "scripts": {
+    "refs": "node tools/fetch-misskey-refs.mjs",
+    "check": "node tools/check.mjs",
+    "render": "bash tools/render.sh 1460 1330 preview/shot.png"
+  },
+  "devDependencies": {
+    "json5": "^2.2.3",
+    "tinycolor2": "^1.6.0"
+  }
+}

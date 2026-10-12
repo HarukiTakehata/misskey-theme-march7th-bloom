@@ -1,0 +1,73 @@
+// March7th Bloom (Light) — Misskey theme
+// 调色板：
+//   #E7BDCC 玫瑰粉  bg / panelHeaderBg / panelHighlight / buttonBg
+//   #FEF9FC 近白    popup / fgOnAccent（只用于弹窗与按钮文字，占屏面积大的表面保持粉色）
+//   #F7D7E3 浅粉    panel / navBg / pageHeaderBg
+//   #DB9CB0 亮玫瑰  navIndicator / love / buttonHoverBg
+//   #A17892 藕荷    accent / fgOnWhite
+//   #B3AAC9 雾紫    infoBg
+//   #4C365E 深紫    fg / infoFg / buttonGradateB
+// 彩色文字（链接/提及/话题标签/导航选中）统一取 accent 加深一档，保证粉底上的可读性。
+{
+	id: '61c8a31b-a351-4bef-a858-cf22e49b2d23',
+
+	name: 'March7th Bloom',
+	author: 'HarukiTakehata',
+	desc: '三月七配色 · 粉紫浅色｜Palette: #E7BDCC #FEF9FC #F7D7E3 #DB9CB0 #A17892 #B3AAC9 #4C365E',
+
+	base: 'light',
+
+	props: {
+		accent: '#A17892',
+		accentedBg: ':alpha<0.2<@accent',
+		love: '#DB9CB0',
+		focus: ':alpha<0.35<@accent',
+
+		bg: '#E7BDCC',
+		fg: '#4C365E',
+		fgHighlighted: ':darken<8<@accent',
+		fgOnAccent: '#FEF9FC',
+		fgOnWhite: '@accent',
+		divider: 'rgba(76, 54, 94, 0.14)',
+
+		panel: '#F7D7E3',
+		panelHighlight: '#E7BDCC',
+		panelHeaderBg: '#E7BDCC',
+		popup: '#FEF9FC',
+		shadow: 'rgba(76, 54, 94, 0.14)',
+		header: ':alpha<0.8<@panel',
+
+		navBg: '@panel',
+		navActive: ':darken<8<@accent',
+		navIndicator: '#DB9CB0',
+		pageHeaderBg: '@panel',
+
+		link: ':darken<8<@accent',
+		hashtag: ':darken<8<@accent',
+		mention: ':darken<8<@accent',
+		mentionMe: ':darken<8<@accent',
+		renote: ':darken<8<@accent',
+
+		buttonBg: '#E7BDCC',
+		buttonHoverBg: '#DB9CB0',
+		buttonGradateA: '@accent',
+		buttonGradateB: '#4C365E',
+
+		switchBg: 'rgba(76, 54, 94, 0.2)',
+		switchOffBg: 'rgba(76, 54, 94, 0.14)',
+		inputBorder: 'rgba(76, 54, 94, 0.18)',
+		inputBorderHover: 'rgba(76, 54, 94, 0.32)',
+		folderHeaderBg: 'rgba(76, 54, 94, 0.06)',
+		folderHeaderHoverBg: 'rgba(76, 54, 94, 0.12)',
+
+		infoBg: '#B3AAC9',
+		infoFg: '#4C365E',
+
+		deckBg: ':darken<6<@bg',
+		htmlThemeColor: '@bg',
+	},
+
+	codeHighlighter: {
+		base: 'catppuccin-latte',
+	},
+}
