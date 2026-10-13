@@ -1,7 +1,7 @@
 {
   "name": "misskey-theme-march7th-bloom",
   "version": "1.0.0",
-  "description": "Misskey theme built from a 7-color pink/violet palette (light + dark)",
+  "description": "Misskey themes from 7-color palettes: March7th Bloom (pink/violet, light+dark), Rose Quartz (white+pink, light), Azure Slate (blue, light)",
   "private": true,
   "type": "module",
   "license": "MIT",
@@ -13,7 +13,7 @@
   "scripts": {
     "refs": "node tools/fetch-misskey-refs.mjs",
     "check": "node tools/check.mjs",
-    "render": "bash tools/render.sh 1460 1330 preview/shot.png"
+    "render": "bash tools/render.sh 1460 2750 preview/shot.png"
   },
   "devDependencies": {
     "json5": "^2.2.3",

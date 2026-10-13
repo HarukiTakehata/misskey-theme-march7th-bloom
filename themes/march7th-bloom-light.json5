@@ -1,38 +1,41 @@
-// March7th Bloom (Light) — Misskey theme
+// March7th Bloom (Light) — Misskey theme · v2 低饱和
 // 调色板：
-//   #E7BDCC 玫瑰粉  bg / panelHeaderBg / panelHighlight / buttonBg
-//   #FEF9FC 近白    popup / fgOnAccent（只用于弹窗与按钮文字，占屏面积大的表面保持粉色）
-//   #F7D7E3 浅粉    panel / navBg / pageHeaderBg
-//   #DB9CB0 亮玫瑰  navIndicator / love / buttonHoverBg
-//   #A17892 藕荷    accent / fgOnWhite
+//   #EDD9E1 雾玫瑰  bg / deckBg        （S=36%，页面底退为淡雾玫瑰灰）
+//   #FBF4F7 月白粉  panel / navBg / pageHeaderBg（S=47% 但明度 97%，近白仅带粉调）
+//   #F3E4EA 浅米粉  panelHeaderBg / panelHighlight / buttonBg（中档，卡片与其头部分层）
+//   #FEF9FC 近白    popup / fgOnAccent
+//   #DB9CB0 亮玫瑰  navIndicator / love / buttonHoverBg（仅图标/指示器/悬停，不作文字色）
+//   #8E677F 藕荷    accent / fgOnWhite（比 v1 的 #A17892 深一档：按钮白字 4.59:1 过 AA）
 //   #B3AAC9 雾紫    infoBg
 //   #4C365E 深紫    fg / infoFg / buttonGradateB
-// 彩色文字（链接/提及/话题标签/导航选中）统一取 accent 加深一档，保证粉底上的可读性。
+// v2 变更：v1 大面积高饱和粉底（panel S=67%）反馈扎眼，panel/bg 全面降饱和提明度，
+// 粉色只保留在强调位（指示器/爱心/悬停）；accent 加深修复 fgOnAccent 3.59:1。
+// 彩色文字（链接/提及/话题标签/导航选中）统一取 accent 加深一档，粉底/粉面上均 ≥5:1。
 {
-	id: '61c8a31b-a351-4bef-a858-cf22e49b2d23',
+	id: 'ab19e5e6-dcdc-4145-9e41-cb7dea450971',
 
 	name: 'March7th Bloom',
 	author: 'HarukiTakehata',
-	desc: '三月七配色 · 粉紫浅色｜Palette: #E7BDCC #FEF9FC #F7D7E3 #DB9CB0 #A17892 #B3AAC9 #4C365E',
+	desc: 'v2 · 低饱和版：粉面板降饱和提明度，修复按钮白字对比度｜Palette: #EDD9E1 #FBF4F7 #F3E4EA #DB9CB0 #8E677F #B3AAC9 #4C365E',
 
 	base: 'light',
 
 	props: {
-		accent: '#A17892',
+		accent: '#8E677F',
 		accentedBg: ':alpha<0.2<@accent',
 		love: '#DB9CB0',
 		focus: ':alpha<0.35<@accent',
 
-		bg: '#E7BDCC',
+		bg: '#EDD9E1',
 		fg: '#4C365E',
 		fgHighlighted: ':darken<8<@accent',
 		fgOnAccent: '#FEF9FC',
-		fgOnWhite: '@accent',
+		fgOnWhite: ':darken<8<@accent',
 		divider: 'rgba(76, 54, 94, 0.14)',
 
-		panel: '#F7D7E3',
-		panelHighlight: '#E7BDCC',
-		panelHeaderBg: '#E7BDCC',
+		panel: '#FBF4F7',
+		panelHighlight: '#F3E4EA',
+		panelHeaderBg: '#F3E4EA',
 		popup: '#FEF9FC',
 		shadow: 'rgba(76, 54, 94, 0.14)',
 		header: ':alpha<0.8<@panel',
@@ -48,7 +51,7 @@
 		mentionMe: ':darken<8<@accent',
 		renote: ':darken<8<@accent',
 
-		buttonBg: '#E7BDCC',
+		buttonBg: '#F3E4EA',
 		buttonHoverBg: '#DB9CB0',
 		buttonGradateA: '@accent',
 		buttonGradateB: '#4C365E',

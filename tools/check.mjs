@@ -21,10 +21,16 @@ const darkBase = readRef('_dark.json5');
 const baseProps = new Set(Object.keys(lightBase.props));
 const basePropsDark = new Set(Object.keys(darkBase.props));
 
-const files = {
-	light: new URL('../themes/march7th-bloom-light.json5', import.meta.url),
-	dark: new URL('../themes/march7th-bloom-dark.json5', import.meta.url),
-};
+const themes = [
+	{ key: 'march7th-light', mode: 'light', file: '../themes/march7th-bloom-light.json5',
+		palette: ['#EDD9E1', '#FBF4F7', '#F3E4EA', '#DB9CB0', '#8E677F', '#B3AAC9', '#4C365E'] },
+	{ key: 'march7th-dark', mode: 'dark', file: '../themes/march7th-bloom-dark.json5',
+		palette: ['#E7BDCC', '#FEF9FC', '#F7D7E3', '#DB9CB0', '#A17892', '#B3AAC9', '#4C365E'] },
+	{ key: 'rose-quartz-light', mode: 'light', file: '../themes/rose-quartz-light.json5',
+		palette: ['#FFFFFF', '#FFF7FA', '#FBE4ED', '#DB5C88', '#C43E6E', '#8A2E4C', '#A02A52'] },
+	{ key: 'azure-slate-light', mode: 'light', file: '../themes/azure-slate-light.json5',
+		palette: ['#4E6294', '#EBF0F7', '#C2D7EE', '#7AA3D4', '#697EAE', '#343E65', '#CEABBC'] },
+];
 
 // ---- WCAG 相对亮度 / 对比度 ----
 const srgb = (c) => { c /= 255; return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4; };
@@ -41,7 +47,8 @@ function contrast(fg, bg) {
 const results = {};
 let failed = false;
 
-for (const [mode, url] of Object.entries(files)) {
+for (const { key, mode, file, palette } of themes) {
+	const url = new URL(file, import.meta.url);
 	const code = fs.readFileSync(url, 'utf8');
 	console.log('\n================ ' + mode.toUpperCase() + ' : ' + url.pathname.split('/').pop() + ' ================');
 
@@ -115,7 +122,7 @@ for (const [mode, url] of Object.entries(files)) {
 		console.log(`   ${flag} ${r.toFixed(2)}:1  ${fgKey} on ${bgKey}  (${compiled[fgKey]} on ${compiled[bgKey]})`);
 	}
 
-	results[mode] = { theme, compiled };
+	results[key] = { theme, compiled, palette };
 }
 
 // ---- id 冲突检查 ----
@@ -231,16 +238,16 @@ function mock(v) {
 	</div>`;
 }
 
-function block(mode, r) {
+function block(key, r) {
 	const vars = Object.entries(r.compiled).map(([k, val]) => `--MI_THEME-${k}: ${val};`).join('\n');
-	return `<section class="theme ${mode}">
-	<style>.${mode}-scope { ${vars} }</style>
-	<div class="${mode}-scope">
+	return `<section class="theme ${key}">
+	<style>.${key}-scope { ${vars} }</style>
+	<div class="${key}-scope">
 		<div class="head">
 			<h2>${r.theme.name}</h2>
 			<span class="badge">${r.theme.base}</span>
 			<div class="palette">
-				${['#E7BDCC', '#FEF9FC', '#F7D7E3', '#DB9CB0', '#A17892', '#B3AAC9', '#4C365E'].map((c) => `<span style="background:${c}" title="${c}"></span>`).join('')}
+				${(r.palette || []).map((c) => `<span style="background:${c}" title="${c}"></span>`).join('')}
 			</div>
 		</div>
 		<div class="row">${swatch(r)}${mock(r)}</div>
@@ -248,7 +255,9 @@ function block(mode, r) {
 </section>`;
 }
 
-const html = `<!doctype html><html><head><meta charset="utf-8"><title>March7th Bloom — theme preview</title>
+const title = 'Misskey 主题预览';
+const blocks = themes.map(({ key }) => block(key, results[key])).join('\n');
+const html = `<!doctype html><html><head><meta charset="utf-8"><title>${title}</title>
 <style>
 body { margin: 0; padding: 24px; background: #23202b; font: 14px/1.6 system-ui, "Noto Sans CJK SC", sans-serif; color: #ddd; }
 h1 { font-size: 18px; margin: 0 0 4px; }
@@ -329,10 +338,9 @@ h1 { font-size: 18px; margin: 0 0 4px; }
 .info { background: var(--MI_THEME-infoBg); color: var(--MI_THEME-infoFg); }
 .infowarn { background: var(--MI_THEME-infoWarnBg); color: var(--MI_THEME-infoWarnFg); }
 </style>
-<h1>March7th Bloom — Misskey theme preview</h1>
-<div class="sub">CSS 变量由 Misskey 官方 compile()（frontend-shared/js/theme.ts）在 Node 中实际计算得出 · 调色板 #E7BDCC #FEF9FC #F7D7E3 #DB9CB0 #A17892 #B3AAC9 #4C365E</div>
-${block('light', results.light)}
-${block('dark', results.dark)}
+<h1>Misskey 主题预览</h1>
+<div class="sub">CSS 变量由 Misskey 官方 compile()（frontend-shared/js/theme.ts）在 Node 中实际计算得出 · 每块右上为对应调色板</div>
+${blocks}
 </html>`;
 
 fs.writeFileSync(new URL('../preview/theme-preview.html', import.meta.url), html);

@@ -1,0 +1,74 @@
+// Rose Quartz (Light) — Misskey theme
+// 默认主题白底结构 + 玫瑰粉强调。正文保持中性灰（只改强调面为粉），
+// 链接/提及/话题标签统一取 accent 玫瑰粉，近白面板上对比度 4.68:1（过 AA）。
+// 调色板：
+//   #FFFFFF  白      bg / panelHeaderBg / pageHeaderBg / popup / fgOnAccent
+//   #FFF7FA  米粉    panel / navBg
+//   #FBE4ED  浅粉    buttonBg / infoBg
+//   #DB5C88  亮玫瑰  navIndicator / love
+//   #C43E6E  玫瑰    accent / link / mention / hashtag / buttonGradateA / navActive
+//   #8A2E4C  深玫    infoFg
+//   #A02A52  酒红    renote / buttonGradateB
+{
+	id: 'd1d5ba15-8245-44d0-af79-9f3134e3fb8a',
+
+	name: 'Rose Quartz',
+	author: 'HarukiTakehata',
+	desc: '默认白底 + 玫瑰粉强调｜Palette: #FFFFFF #FFF7FA #FBE4ED #DB5C88 #C43E6E #8A2E4C #A02A52',
+
+	base: 'light',
+
+	props: {
+		accent: '#C43E6E',
+		accentedBg: ':alpha<0.15<@accent',
+		love: '#DB5C88',
+		focus: ':alpha<0.3<@accent',
+
+		bg: '#FFFFFF',
+		fg: '#5F5F5F',
+		fgHighlighted: ':darken<6<@fg',
+		fgOnAccent: '#FFFFFF',
+		fgOnWhite: '#3A3A3A',
+		divider: 'rgba(196, 62, 110, 0.12)',
+
+		panel: '#FFF7FA',
+		panelHighlight: '#FBE4ED',
+		panelHeaderBg: '#FFFFFF',
+		popup: '#FFFFFF',
+		shadow: 'rgba(196, 62, 110, 0.10)',
+		header: ':alpha<0.85<@panel',
+
+		navBg: '@panel',
+		navActive: '@accent',
+		navIndicator: '#DB5C88',
+		pageHeaderBg: '#FFFFFF',
+
+		link: '@accent',
+		hashtag: '@accent',
+		mention: '@accent',
+		mentionMe: '@accent',
+		renote: '#A02A52',
+
+		buttonBg: '#FBE4ED',
+		buttonHoverBg: '#F5D2DE',
+		buttonGradateA: '@accent',
+		buttonGradateB: '#A02A52',
+
+		switchBg: 'rgba(196, 62, 110, 0.15)',
+		switchOffBg: 'rgba(196, 62, 110, 0.10)',
+		inputBorder: 'rgba(196, 62, 110, 0.15)',
+		inputBorderHover: 'rgba(196, 62, 110, 0.32)',
+		folderHeaderBg: 'rgba(196, 62, 110, 0.05)',
+		folderHeaderHoverBg: 'rgba(196, 62, 110, 0.10)',
+
+		infoBg: '#FBE4ED',
+		infoFg: '#8A2E4C',
+
+		deckBg: ':darken<2<@bg',
+		htmlThemeColor: '@bg',
+	},
+
+	codeHighlighter: {
+		base: 'catppuccin-latte',
+	},
+}

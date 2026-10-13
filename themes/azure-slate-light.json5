@@ -1,0 +1,75 @@
+// Azure Slate (Light) — Misskey theme
+// 用户给的 7 色蓝调调色板。深靛蓝 #343E65 作正文（9:1 对比度），
+// 靛蓝 #4E6294 作 accent / 链接 / 提及 / 话题标签（近白面板上 5.73:1 过 AA），
+// 中蓝 #697EAE 作导航指示与转述，浅蓝 #C2D7EE 作信息条 / 按钮底色，深靛蓝收尾渐变。
+// 调色板：
+//   #4E6294 靛蓝      accent / link / mention / hashtag / navActive / buttonGradateA
+//   #EBF0F7 雾蓝      bg / pageHeaderBg
+//   #C2D7EE 浅蓝      infoBg / buttonBg
+//   #7AA3D4 中蓝      navIndicator / love / buttonHoverBg
+//   #697EAE 钢蓝      （调色板成员；文字角色改取 accent #4E6294 以保证 AA）
+//   #343E65 深靛蓝    fg / infoFg / buttonGradateB
+//   #CEABBC 藕灰粉    （暖调点缀，未作大面积承载面）
+{
+	id: '6bdd5fd4-ee43-4b00-a557-694c1191d95f',
+
+	name: 'Azure Slate',
+	author: 'HarukiTakehata',
+	desc: '蓝调配色 · 浅色｜Palette: #4E6294 #EBF0F7 #C2D7EE #7AA3D4 #697EAE #343E65 #CEABBC',
+
+	base: 'light',
+
+	props: {
+		accent: '#4E6294',
+		accentedBg: ':alpha<0.18<@accent',
+		love: '#7AA3D4',
+		focus: ':alpha<0.3<@accent',
+
+		bg: '#EBF0F7',
+		fg: '#343E65',
+		fgHighlighted: '#343E65',
+		fgOnAccent: '#FFFFFF',
+		fgOnWhite: '#343E65',
+		divider: 'rgba(52, 62, 101, 0.12)',
+
+		panel: '#F7FAFD',
+		panelHighlight: '#E3ECF6',
+		panelHeaderBg: '#EBF0F7',
+		popup: '#FFFFFF',
+		shadow: 'rgba(52, 62, 101, 0.12)',
+		header: ':alpha<0.85<@panel',
+
+		navBg: '@panel',
+		navActive: '@accent',
+		navIndicator: '#7AA3D4',
+		pageHeaderBg: '#EBF0F7',
+
+		link: '@accent',
+		hashtag: '@accent',
+		mention: '@accent',
+		mentionMe: '@accent',
+		renote: '@accent',
+
+		buttonBg: '#C2D7EE',
+		buttonHoverBg: '#B3C9E6',
+		buttonGradateA: '@accent',
+		buttonGradateB: '#343E65',
+
+		switchBg: 'rgba(52, 62, 101, 0.15)',
+		switchOffBg: 'rgba(52, 62, 101, 0.10)',
+		inputBorder: 'rgba(52, 62, 101, 0.15)',
+		inputBorderHover: 'rgba(52, 62, 101, 0.32)',
+		folderHeaderBg: 'rgba(52, 62, 101, 0.05)',
+		folderHeaderHoverBg: 'rgba(52, 62, 101, 0.10)',
+
+		infoBg: '#C2D7EE',
+		infoFg: '#343E65',
+
+		deckBg: ':darken<4<@bg',
+		htmlThemeColor: '@bg',
+	},
+
+	codeHighlighter: {
+		base: 'catppuccin-latte',
+	},
+}
